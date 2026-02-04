@@ -1,0 +1,166 @@
+# ===================================
+# 敏感信息（绝对不能上传！）
+# ===================================
+
+# 环境变量文件（包含 API 密钥等敏感信息）
+.env
+*.env
+!.env.example
+
+# 数据库文件（包含用户数据）
+*.db
+*.sqlite
+*.sqlite3
+
+# 备份文件
+*.bak
+*.backup
+
+# ===================================
+# Python
+# ===================================
+
+# 字节码
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# 虚拟环境
+venv/
+env/
+ENV/
+.venv/
+.Python
+
+# 分发/打包
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# 单元测试/覆盖率
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
+
+# ===================================
+# IDE 和编辑器
+# ===================================
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ===================================
+# 操作系统
+# ===================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ===================================
+# 日志和临时文件
+# ===================================
+
+# 日志文件
+*.log
+logs/
+*.log.*
+
+# 临时文件
+*.tmp
+*.temp
+*.cache
+
+# ===================================
+# 项目特定
+# ===================================
+
+# 测试数据
+test_data/
+*.test
+
+# 文档生成
+docs/_build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# ===================================
+# 部署相关
+# ===================================
+
+# Railway/Vercel 本地配置
+.vercel
+.railway
+
+# Docker
+*.dockerignore
+
+# ===================================
+# 其他
+# ===================================
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+
+# 密钥文件
+*.pem
+*.key
+*.cert
+credentials.json
+secrets.json

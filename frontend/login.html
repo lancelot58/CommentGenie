@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 学生评语生成器</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 标题 -->
+        <h1>学生评语生成器</h1>
+        <p class="subtitle">AI 助力，让评语更有温度</p>
+
+        <!-- 消息提示区域 -->
+        <div id="message"></div>
+
+        <!-- 登录表单 -->
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="请输入用户名"
+                    required
+                    autocomplete="username"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="请输入密码"
+                    required
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <button type="submit" class="btn" id="loginBtn">
+                登录
+            </button>
+        </form>
+
+        <!-- 注册链接 -->
+        <div class="link">
+            还没有账号？<a href="register.html">立即注册</a>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // 登录表单提交处理
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+
+            // 验证输入
+            if (!username || !password) {
+                showMessage('请填写完整信息', 'error');
+                return;
+            }
+
+            // 禁用按钮，显示加载状态
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '登录中<span class="loading"></span>';
+
+            try {
+                // 调用登录函数
+                const result = await login(username, password);
+
+                if (result.success) {
+                    showMessage('登录成功！正在跳转...', 'success');
+                    // 延迟跳转，让用户看到成功消息
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showMessage(result.message || '登录失败，请重试', 'error');
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = '登录';
+                }
+            } catch (error) {
+                showMessage('网络错误，请检查服务器是否启动', 'error');
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = '登录';
+            }
+        });
+
+        // 显示消息提示
+        function showMessage(text, type = 'info') {
+            const messageDiv = document.getElementById('message');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = text;
+            messageDiv.style.display = 'block';
+
+            // 3秒后自动隐藏（错误消息除外）
+            if (type !== 'error') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // 页面加载时检查是否已登录
+        window.addEventListener('load', () => {
+            if (isLoggedIn()) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+</html>
