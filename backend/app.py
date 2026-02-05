@@ -39,7 +39,8 @@ CORS(app, resources={
             "http://localhost:3000",  # 开发环境
             "https://*.vercel.app",  # Vercel 所有部署（包括预览）
             "https://commentgenie.vercel.app",  # Vercel 原域名
-            "https://edukit.xyz",  # 自定义域名
+            "https://edukit.xyz",  # 自定义域名（不带 www）
+            "https://www.edukit.xyz",  # 自定义域名（带 www）
             "https://*.edukit.xyz"  # 自定义域名的所有子域名
         ],
         "methods": ["GET", "POST", "PUT", "DELETE"],
