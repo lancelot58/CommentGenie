@@ -35,7 +35,11 @@ jwt = JWTManager(app)
 # 开发环境允许所有来源，生产环境需要指定具体域名
 CORS(app, resources={
     r"/api/*": {
-        "origins": "*",  # 生产环境改为具体域名，如 "https://yourdomain.com"
+        "origins": [
+            "http://localhost:3000",  # 开发环境
+            "https://*.vercel.app",  # Vercel 所有部署（包括预览）
+            "https://commentgenie.vercel.app"  # 生产环境（如果有自定义域名）
+        ],
         "methods": ["GET", "POST", "PUT", "DELETE"],
         "allow_headers": ["Content-Type", "Authorization"]
     }
