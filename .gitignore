@@ -3,9 +3,14 @@
 # ===================================
 
 # 环境变量文件（包含 API 密钥等敏感信息）
-.env
-*.env
-!.env.example
+# 注意：backend/.env 包含敏感的 API 密钥，不能提交
+backend/.env
+backend/*.env
+!backend/.env.example
+
+# 前端环境变量可以提交（只包含 API URL，不包含密钥）
+# frontend/.env.development
+# frontend/.env.production
 
 # 数据库文件（包含用户数据）
 *.db
@@ -15,6 +20,18 @@
 # 备份文件
 *.bak
 *.backup
+
+# ===================================
+# Node.js / Frontend
+# ===================================
+
+# 依赖
+node_modules/
+frontend/node_modules/
+
+# 构建输出
+frontend/dist/
+frontend/build/
 
 # ===================================
 # Python
