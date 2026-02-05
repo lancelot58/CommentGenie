@@ -38,7 +38,9 @@ CORS(app, resources={
         "origins": [
             "http://localhost:3000",  # 开发环境
             "https://*.vercel.app",  # Vercel 所有部署（包括预览）
-            "https://commentgenie.vercel.app"  # 生产环境（如果有自定义域名）
+            "https://commentgenie.vercel.app",  # Vercel 原域名
+            "https://edukit.xyz",  # 自定义域名
+            "https://*.edukit.xyz"  # 自定义域名的所有子域名
         ],
         "methods": ["GET", "POST", "PUT", "DELETE"],
         "allow_headers": ["Content-Type", "Authorization"]
