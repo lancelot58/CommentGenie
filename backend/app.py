@@ -406,18 +406,22 @@ if __name__ == '__main__':
     # 获取端口号（从环境变量或默认5000）
     port = int(os.getenv('PORT', 5000))
 
+    # 判断是否为生产环境
+    is_production = os.getenv('FLASK_ENV') == 'production'
+
     print("=" * 50)
     print("学生评语生成器 API 服务器")
     print("=" * 50)
-    print(f"服务器地址: http://localhost:{port}")
-    print(f"API 文档: http://localhost:{port}/")
+    print(f"环境: {'生产环境' if is_production else '开发环境'}")
+    print(f"服务器地址: http://0.0.0.0:{port}")
+    print(f"API 文档: http://0.0.0.0:{port}/")
     print("=" * 50)
 
     # 启动服务器
-    # debug=True: 开发模式，代码修改后自动重启
+    # debug: 开发模式启用，生产模式禁用
     # host='0.0.0.0': 允许外部访问
     app.run(
         host='0.0.0.0',
         port=port,
-        debug=True
+        debug=not is_production
     )
